@@ -46,3 +46,5 @@ next-env.d.ts
 # Errors
 /Errors
 /Temp
+# Sentry Config File
+.env.sentry-build-plugin
