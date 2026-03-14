@@ -1,6 +1,6 @@
 "use client";
 
-import { ClerkProvider, SignInButton, SignUpButton, useAuth, UserButton } from "@clerk/nextjs";
+import { ClerkProvider, useAuth, UserButton } from "@clerk/nextjs";
 import { Authenticated, Unauthenticated,  ConvexReactClient, AuthLoading } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ThemeProvider } from "./theme-provider";
@@ -13,6 +13,7 @@ export const Providers = ({children} : { children: React.ReactNode }) => {
     return (
         <ClerkProvider>
             <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+        
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange >
                     
                     <Authenticated>
@@ -29,6 +30,6 @@ export const Providers = ({children} : { children: React.ReactNode }) => {
 
                 </ThemeProvider>
             </ConvexProviderWithClerk>
-        </ClerkProvider>
+        </ClerkProvider> 
     );
 };
