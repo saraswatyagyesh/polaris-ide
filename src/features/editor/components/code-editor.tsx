@@ -8,6 +8,7 @@ import { keymap } from "@codemirror/view";
 import { minimap } from "../extensions/minimap";
 import { indentationMarkers } from "@replit/codemirror-indentation-markers";
 import { customSetup } from "../extensions/custom-setup";
+import { suggestion } from "../extensions/suggestion";
 
 interface Props { fileName: string; initialValue: string; onChange: (value: string) => void; }
 
@@ -24,7 +25,7 @@ export const CodeEditor = ({ fileName, initialValue, onChange }: Props) => {
         const view = new EditorView({
             doc: initialValue,
             parent: editorRef.current,
-            extensions: [oneDark, customTheme, customSetup, languageExtension, keymap.of([indentWithTab]), minimap(), indentationMarkers(),
+            extensions: [oneDark, customTheme, customSetup, languageExtension, keymap.of([indentWithTab]), minimap(), suggestion(fileName), indentationMarkers(),
                 EditorView.updateListener.of((update) => { if (update.docChanged) { onChange(update.state.doc.toString()); } })],
         });
         viewRef.current = view;

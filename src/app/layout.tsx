@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { Providers } from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
 
 
 
@@ -15,7 +16,7 @@ const inter = Inter({
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
-  weight: ["400","500","600","700"]
+  weight: ["400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
@@ -34,9 +35,10 @@ export default function RootLayout({
         <body
           className={`${inter.variable} ${plexMono.variable} antialiased`}
         >
-            <Providers>
-              {children} 
-            </Providers>
+          <Providers>
+            {children}
+            <Toaster />
+          </Providers>
         </body>
       </html>
     </ClerkProvider>
