@@ -1,9 +1,9 @@
 "use client";
 
 import { Allotment } from "allotment";
-import "allotment/dist/style.css";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { Navbar } from "./navbar";
+import { ConversationSidebar } from "@/features/conversations/components/conversation-sidebar";
 
 const MIN_SIDEBAR_WIDTH = 200;
 const MAX_SIDEBAR_WIDTH = 800;
@@ -16,7 +16,7 @@ export const ProjectIdLayout = ({ children, projectId, }: { children: React.Reac
             <Navbar projectId={projectId} />
             <Allotment className="flex-1" defaultSizes={[DEFAULT_CONVERSATION_SIDEBAR_WIDTH, DEFAULT_MAIN_SIZE]}>
                 <Allotment.Pane snap minSize={MIN_SIDEBAR_WIDTH} maxSize={MAX_SIDEBAR_WIDTH} preferredSize={DEFAULT_CONVERSATION_SIDEBAR_WIDTH}>
-                    <div>Conversation Sidebar</div>
+                    <ConversationSidebar projectId={projectId} />
                 </Allotment.Pane>
                 <Allotment.Pane>
                     {children}
